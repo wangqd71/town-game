@@ -1,0 +1,469 @@
+{
+  "master_grey": {
+    "name": "格雷师傅",
+    "title": "你的师父",
+    "description": "一位年过六旬的老匠人，满手老茧，目光如炬。他相信手艺是穷人的尊严。",
+    "location": "workshop",
+    "personality": "wise",
+    "dialogues": {
+      "greeting": {
+        "type": "dialogue",
+        "speaker": "格雷师傅",
+        "mood": "wise",
+        "text": "孩子，手艺人靠的是手，不是嘴。今天你打算做些什么？",
+        "choices": [
+          {
+            "text": "请教技艺",
+            "next": {
+              "type": "dialogue",
+              "speaker": "格雷师傅",
+              "mood": "wise",
+              "text": "好。手艺这东西，不是光靠天赋，是要靠一遍一遍练出来的。我年轻时，手上全是烫伤的疤。",
+              "choices": [
+                {
+                  "text": "「那您是怎么坚持下来的？」",
+                  "effects": { "exp": 10, "attribute": "wit", "value": 1 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "格雷师傅",
+                    "mood": "wise",
+                    "text": "穷人家的孩子，没有退路。但渐渐地，我从手艺中找到了尊严。每一次锤击，都是对命运的反击。",
+                    "set_flag": ["learned_master_story"]
+                  }
+                },
+                {
+                  "text": "「我想尽快出师。」",
+                  "effects": { "exp": 5, "attribute": "grit", "value": 1 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "格雷师傅",
+                    "mood": "serious",
+                    "text": "急什么？根基不牢，盖得再高也会倒。先把基本功练扎实。"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "text": "聊聊外面的世界",
+            "next": {
+              "type": "dialogue",
+              "speaker": "格雷师傅",
+              "mood": "serious",
+              "text": "外面？到处都是工厂的烟囱。机器一天能干我们一个月的活。但机器做的东西，没有灵魂。",
+              "set_flag": ["heard_about_industry"]
+            }
+          },
+          {
+            "text": "去别处看看",
+            "next": null
+          }
+        ]
+      },
+      "promote_apprentice": {
+        "type": "dialogue",
+        "speaker": "格雷师傅",
+        "mood": "wise",
+        "text": "你在这行已经有些日子了。我想是时候让你试试独立完成一件作品了。",
+        "requires": { "min_reputation": 15 },
+        "choices": [
+          {
+            "text": "接受考验",
+            "next": {
+              "type": "skill_check",
+              "attribute": "craft",
+              "difficulty": 4,
+              "success": {
+                "type": "effect",
+                "effects": { "reputation": 15, "exp": 20, "gold": 30 },
+                "next": {
+                  "type": "dialogue",
+                  "speaker": "格雷师傅",
+                  "mood": "happy",
+                  "text": "不错！你已经不是当初那个什么都不懂的孩子了。从今天起，你可以自称帮工了。"
+                }
+              },
+              "fail": {
+                "type": "dialogue",
+                "speaker": "格雷师傅",
+                "mood": "neutral",
+                "text": "还不够好。没关系，继续练。手艺人不怕失败，怕的是不敢尝试。"
+              }
+            }
+          },
+          {
+            "text": "还没准备好",
+            "next": {
+              "type": "narrator",
+              "text": "格雷师傅点了点头，没有说什么。你感到一丝羞愧。"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "merchant_hall": {
+    "name": "霍尔先生",
+    "title": "商人公会代表",
+    "description": "穿着考究的中年商人，圆滑而精明。他代表着新兴的商业力量。",
+    "location": "market",
+    "personality": "neutral",
+    "dialogues": {
+      "greeting": {
+        "type": "dialogue",
+        "speaker": "霍尔先生",
+        "mood": "neutral",
+        "text": "哦？是格雷师傅的学徒吧？你师父的活儿不错，就是太死板了。时代变了，年轻人。",
+        "choices": [
+          {
+            "text": "「时代怎么变了？」",
+            "next": {
+              "type": "dialogue",
+              "speaker": "霍尔先生",
+              "mood": "neutral",
+              "text": "工厂。大机器。一个人一天能做以前一百人的活。你们手艺人那一套，迟早要被淘汰。",
+              "choices": [
+                {
+                  "text": "「手工艺不会被取代。」",
+                  "effects": { "reputation": 5, "attribute": "charm", "value": 1 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "霍尔先生",
+                    "mood": "happy",
+                    "text": "哈！有骨气。不过光有骨气可活不下去。等你出师了，来找我，我给你介绍生意。",
+                    "set_flag": ["met_merchant"]
+                  }
+                },
+                {
+                  "text": "「也许您说得对。」",
+                  "effects": { "attribute": "wit", "value": 1 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "霍尔先生",
+                    "mood": "neutral",
+                    "text": "识时务者为俊杰。等你想通了，随时来找我。"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "text": "不理会他，继续做自己的事",
+            "effects": { "attribute": "grit", "value": 1 }
+          }
+        ]
+      },
+      "trade_offer": {
+        "type": "dialogue",
+        "speaker": "霍尔先生",
+        "mood": "neutral",
+        "text": "我这里有笔生意。一个农场主需要一批农具，你有兴趣吗？报酬不错。",
+        "requires": { "flag": "met_merchant", "profession": "blacksmith" },
+        "choices": [
+          {
+            "text": "接下这单生意",
+            "next": {
+              "type": "skill_check",
+              "attribute": "craft",
+              "difficulty": 5,
+              "success": {
+                "type": "effect",
+                "effects": { "gold": 80, "reputation": 10, "exp": 30, "skills": ["犁铧制造"] },
+                "next": {
+                  "type": "dialogue",
+                  "speaker": "霍尔先生",
+                  "mood": "happy",
+                  "text": "干得漂亮！农场主很满意。看来你师父没白教你。以后有生意我还找你。"
+                }
+              },
+              "fail": {
+                "type": "effect",
+                "effects": { "gold": 20, "reputation": -5 },
+                "next": {
+                  "type": "dialogue",
+                  "speaker": "霍尔先生",
+                  "mood": "sad",
+                  "text": "质量不太行啊。农场主虽然没说什么，但下次可能不会再来找你了。再磨练磨练吧。"
+                }
+              }
+            }
+          },
+          {
+            "text": "暂时不接",
+            "next": {
+              "type": "narrator",
+              "text": "霍尔先生耸了耸肩，转身离开了。"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "lady_rose": {
+    "name": "罗丝夫人",
+    "title": "贵族遗孀",
+    "description": "衣着华丽的贵妇人，丈夫去世后继承了一笔遗产。她对手工艺品有着极高的鉴赏力。",
+    "location": "noble_district",
+    "personality": "serious",
+    "dialogues": {
+      "greeting": {
+        "type": "dialogue",
+        "speaker": "罗丝夫人",
+        "mood": "serious",
+        "text": "你是格雷师傅的学徒？他是个好人，但太固执了。这个时代需要的是既实用又美观的东西。",
+        "choices": [
+          {
+            "text": "「您说得有道理。」",
+            "effects": { "attribute": "charm", "value": 1, "reputation": 5 },
+            "next": {
+              "type": "dialogue",
+              "speaker": "罗丝夫人",
+              "mood": "happy",
+              "text": "你比你师父开明。我喜欢和支持那些愿意创新的手艺人。保持联系。",
+              "set_flag": ["impressed_lady_rose"]
+            }
+          },
+          {
+            "text": "「格雷师傅是对的。」",
+            "effects": { "attribute": "grit", "value": 1 },
+            "next": {
+              "type": "dialogue",
+              "speaker": "罗丝夫人",
+              "mood": "neutral",
+              "text": "固执的年轻人。不过，至少你有立场。"
+            }
+          }
+        ]
+      },
+      "commission": {
+        "type": "dialogue",
+        "speaker": "罗丝夫人",
+        "mood": "serious",
+        "text": "我需要一件特别的东西。不是那种粗制滥造的工厂货，而是真正有灵魂的作品。你能做吗？",
+        "requires": { "flag": "impressed_lady_rose", "min_reputation": 20 },
+        "choices": [
+          {
+            "text": "当然，请说您的要求",
+            "next": {
+              "type": "dialogue",
+              "speaker": "罗丝夫人",
+              "mood": "neutral",
+              "text": "我想要一件能代表这个时代精神的作品。不是复古，也不是盲目追新。你懂我的意思吗？",
+              "choices": [
+                {
+                  "text": "「工艺美术的精髓——美与实用的统一」",
+                  "effects": { "exp": 40, "reputation": 20, "gold": 150 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "罗丝夫人",
+                    "mood": "happy",
+                    "text": "正是如此！你果然是有见识的年轻人。这件作品完成后，我会在贵族圈子里为你宣传。"
+                  }
+                },
+                {
+                  "text": "「我会尽力而为」",
+                  "effects": { "exp": 20, "gold": 80 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "罗丝夫人",
+                    "mood": "neutral",
+                    "text": "好吧。希望你能让我满意。"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "text": "抱歉，我目前能力不足",
+            "next": {
+              "type": "narrator",
+              "text": "罗丝夫人微微皱眉，转身离开了。"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "journalist_edge": {
+    "name": "艾奇",
+    "title": "地下记者",
+    "description": "衣衫褴褛但眼神锐利的年轻人。他在为一份秘密刊物工作，揭露工厂的恶劣条件。",
+    "location": "tavern",
+    "personality": "mysterious",
+    "dialogues": {
+      "greeting": {
+        "type": "dialogue",
+        "speaker": "艾奇",
+        "mood": "mysterious",
+        "text": "嘘……你是格雷师傅的学徒？我听说过你们的手艺人。在这个时代，你们就像最后的守夜人。",
+        "choices": [
+          {
+            "text": "「你在做什么？」",
+            "next": {
+              "type": "dialogue",
+              "speaker": "艾奇",
+              "mood": "mysterious",
+              "text": "我在写东西。关于工厂里那些工人的遭遇。你知道吗？有些孩子才十岁，每天工作十四个小时。",
+              "choices": [
+                {
+                  "text": "「这太可怕了。我能帮什么忙？」",
+                  "effects": { "attribute": "charm", "value": 1, "reputation": 5 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "艾奇",
+                    "mood": "happy",
+                    "text": "你需要帮忙？太好了。我需要一些……印刷方面的帮助。你认识什么印刷工吗？",
+                    "set_flag": ["met_journalist"]
+                  }
+                },
+                {
+                  "text": "「这和我有什么关系？」",
+                  "effects": { "attribute": "wit", "value": 1 },
+                  "next": {
+                    "type": "dialogue",
+                    "speaker": "艾奇",
+                    "mood": "sad",
+                    "text": "没关系？总有一天你会发现，这个时代没有人能独善其身。"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "text": "保持距离，观察他",
+            "effects": { "attribute": "wit", "value": 1 }
+          }
+        ]
+      },
+      "secret_printing": {
+        "type": "dialogue",
+        "speaker": "艾奇",
+        "mood": "mysterious",
+        "text": "我需要印刷一些东西。不能让任何人知道。你会帮忙吗？",
+        "requires": { "flag": "met_journalist", "profession": "printer", "min_reputation": 25 },
+        "choices": [
+          {
+            "text": "「我愿意帮忙。」",
+            "next": {
+              "type": "skill_check",
+              "attribute": "wit",
+              "difficulty": 5,
+              "success": {
+                "type": "effect",
+                "effects": { "reputation": 25, "exp": 40, "skills": ["快速排版", "加密印品"], "flag": ["revolution_printer"] },
+                "next": {
+                  "type": "dialogue",
+                  "speaker": "艾奇",
+                  "mood": "happy",
+                  "text": "干得好！这批印刷品会在工人中间流传。也许改变不了什么，但至少让人们知道真相。"
+                }
+              },
+              "fail": {
+                "type": "effect",
+                "effects": { "reputation": -10, "flag": ["printing_mistake"] },
+                "next": {
+                  "type": "dialogue",
+                  "speaker": "艾奇",
+                  "mood": "serious",
+                  "text": "出了一些问题……印刷品有瑕疵。不过没关系，我会想办法处理。你小心点。"
+                }
+              }
+            }
+          },
+          {
+            "text": "「太危险了，我不能参与」",
+            "next": {
+              "type": "dialogue",
+              "speaker": "艾奇",
+              "mood": "sad",
+              "text": "我理解。不是每个人都有勇气。但请不要告诉任何人我们见过面。"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "apprentice_iris": {
+    "name": "艾丽丝",
+    "title": "同门学徒",
+    "description": "比你早来半年的女孩，性格开朗，手艺学得很快。她是你的竞争对手，也可能是朋友。",
+    "location": "workshop",
+    "personality": "happy",
+    "dialogues": {
+      "greeting": {
+        "type": "dialogue",
+        "speaker": "艾丽丝",
+        "mood": "happy",
+        "text": "嘿！你来了。今天格雷师傅教了我新东西，你要不要比试比试？",
+        "choices": [
+          {
+            "text": "比就比！",
+            "next": {
+              "type": "skill_check",
+              "attribute": "craft",
+              "difficulty": 4,
+              "success": {
+                "type": "effect",
+                "effects": { "exp": 15, "reputation": 5 },
+                "next": {
+                  "type": "dialogue",
+                  "speaker": "艾丽丝",
+                  "mood": "happy",
+                  "text": "你赢了！不过下次可不一定。你真厉害，我们一起进步吧！",
+                  "set_flag": ["rival_friendly"]
+                }
+              },
+              "fail": {
+                "type": "effect",
+                "effects": { "exp": 10 },
+                "next": {
+                  "type": "dialogue",
+                  "speaker": "艾丽丝",
+                  "mood": "happy",
+                  "text": "哈哈，这次是我赢了！别灰心，你也很棒的。我们一起努力！",
+                  "set_flag": ["rival_friendly"]
+                }
+              }
+            }
+          },
+          {
+            "text": "改天吧，今天想安静点",
+            "next": {
+              "type": "narrator",
+              "text": "艾丽丝有些失望，但很快又笑了起来。"
+            }
+          }
+        ]
+      },
+      "rival_concern": {
+        "type": "dialogue",
+        "speaker": "艾丽丝",
+        "mood": "sad",
+        "text": "你听说了吗？城东那家工厂又出事了，一个工人被机器绞断了手。这个时代……真的在变。",
+        "requires": { "flag": "heard_about_industry" },
+        "choices": [
+          {
+            "text": "「我们需要做点什么。」",
+            "effects": { "attribute": "charm", "value": 1, "reputation": 5 },
+            "next": {
+              "type": "dialogue",
+              "speaker": "艾丽丝",
+              "mood": "serious",
+              "text": "是啊。也许我们手艺人能做的，就是证明另一种可能——机器永远无法替代人的温度。"
+            }
+          },
+          {
+            "text": "「我们只能管好自己。」",
+            "effects": { "attribute": "wit", "value": 1 },
+            "next": {
+              "type": "dialogue",
+              "speaker": "艾丽丝",
+              "mood": "sad",
+              "text": "也许吧……但我总觉得，我们不能只是旁观。"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "workshop": {
+    "name": "格雷师傅的工坊",
+    "description": "一间狭小但整洁的工坊，炉火永不熄灭。墙上挂满了工具和半成品。空气中弥漫着铁锈和炭火的气味。这里是你的第二个家。",
+    "connections": ["market", "tavern", "factory_district"],
+    "npcs": ["master_grey", "apprentice_iris"]
+  },
+  "market": {
+    "name": "城市广场市场",
+    "description": "宽阔的广场上摆满了摊位，叫卖声此起彼伏。这里是城市的心脏，三教九流汇聚于此。远处可以看到工厂的烟囱。",
+    "connections": ["workshop", "noble_district", "factory_district", "tavern"],
+    "npcs": ["merchant_hall"]
+  },
+  "tavern": {
+    "name": "老铁锚酒馆",
+    "description": "昏暗的酒馆里弥漫着烟雾和麦酒的香气。角落里有几个工人在低声交谈，壁炉旁坐着几个看报纸的绅士。",
+    "connections": ["market", "workshop"],
+    "npcs": ["journalist_edge"]
+  },
+  "noble_district": {
+    "name": "贵族区",
+    "description": "宽阔的石板路两旁是气派的联排别墅，马车在街道上缓缓驶过。这里是富人的世界，与工人区形成鲜明对比。",
+    "connections": ["market", "cathedral"],
+    "npcs": ["lady_rose"]
+  },
+  "factory_district": {
+    "name": "工厂区",
+    "description": "巨大的烟囱遮蔽了天空，空气中弥漫着煤烟的味道。机器的轰鸣声不绝于耳，工人们面无表情地进出工厂大门。",
+    "connections": ["market", "workshop"],
+    "npcs": []
+  },
+  "cathedral": {
+    "name": "圣玛丽大教堂",
+    "description": "高耸的哥特式尖塔刺向云天，彩色玻璃窗在阳光下闪烁。教堂是城市最高的建筑，也是穷人最后的庇护所。",
+    "connections": ["noble_district"],
+    "npcs": []
+  }
+}
