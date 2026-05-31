@@ -1,18 +1,18 @@
 {
-  "结局": {
-    "巨匠之路": {
-      "ID": "grand_master",
-      "名称": "大成：巨匠之路",
-      "描述": "你成为了真正的巨匠，你的名字将被载入史册。",
-      "条件": {
-        "最低阶位": 6,
-        "最低声望": 100,
-        "最低金币": 500,
-        "最低技艺": 9,
-        "必需技能": ["铁艺之魂", "传世名剑", "百炼成钢"],
-        "必需标志": ["met_merchant", "met_journalist", "met_priest"]
+  "endings": {
+    "grand_master": {
+      "id": "grand_master",
+      "name": "大成：巨匠之路",
+      "description": "你成为了真正的巨匠，你的名字将被载入史册。",
+      "conditions": {
+        "min_rank_level": 6,
+        "min_reputation": 100,
+        "min_gold": 500,
+        "min_craft": 9,
+        "required_skills": ["铁艺之魂", "传世名剑", "百炼成钢"],
+        "required_flags": ["met_merchant", "met_journalist", "met_priest"]
       },
-      "结局文本": [
+      "ending_text": [
         "多年后，你的工坊成为了整个伦敦最负盛名的地方。",
         "从王公贵族到普通工人，都以拥有你的作品为荣。",
         "你的铁锤声成为了这个时代的象征——在机器轰鸣的年代，",
@@ -28,18 +28,18 @@
         "【结局：大成——你成为了真正的巨匠】"
       ]
     },
-    "革命之火": {
-      "ID": "revolution_hero",
-      "名称": "大成：革命之火",
-      "描述": "你用手艺点燃了革命的火种，改变了无数人的命运。",
-      "条件": {
-        "最低阶位": 4,
-        "最低声望": 80,
-        "最低智慧": 7,
-        "最低魅力": 6,
-        "必需标志": ["revolution_printer", "met_journalist", "met_factory_worker", "know_factory_secret"]
+    "revolution_hero": {
+      "id": "revolution_hero",
+      "name": "大成：革命之火",
+      "description": "你用手艺点燃了革命的火种，改变了无数人的命运。",
+      "conditions": {
+        "min_rank_level": 4,
+        "min_reputation": 80,
+        "min_wit": 7,
+        "min_charm": 6,
+        "required_flags": ["revolution_printer", "met_journalist", "met_factory_worker", "know_factory_secret"]
       },
-      "结局文本": [
+      "ending_text": [
         "你没有成为最伟大的匠人，但你成为了更重要的东西——",
         "一个改变时代的人。",
         "",
@@ -56,18 +56,18 @@
         "【结局：大成——你成为了革命的火种】"
       ]
     },
-    "艺术之魂": {
-      "ID": "artistic_master",
-      "名称": "大成：艺术之魂",
-      "描述": "你将手艺升华为艺术，创造了永恒的美。",
-      "条件": {
-        "最低阶位": 5,
-        "最低声望": 90,
-        "最低技艺": 8,
-        "最低魅力": 7,
-        "必需标志": ["impressed_lady_rose", "know_arts_crafts_movement", "met_merchant_daughter"]
+    "artistic_master": {
+      "id": "artistic_master",
+      "name": "大成：艺术之魂",
+      "description": "你将手艺升华为艺术，创造了永恒的美。",
+      "conditions": {
+        "min_rank_level": 5,
+        "min_reputation": 90,
+        "min_craft": 8,
+        "min_charm": 7,
+        "required_flags": ["impressed_lady_rose", "know_arts_crafts_movement", "met_merchant_daughter"]
       },
-      "结局文本": [
+      "ending_text": [
         "你没有追求权力或财富，而是追求纯粹的美。",
         "",
         "罗丝夫人成为了你最忠实的赞助人。",
@@ -84,16 +84,16 @@
         "【结局：大成——你成为了艺术的化身】"
       ]
     },
-    "穷困潦倒": {
-      "ID": "failure_bankrupt",
-      "名称": "失败：穷困潦倒",
-      "描述": "你失去了所有，最终沦落街头。",
-      "条件": {
-        "最高金币": 0,
-        "最高声望": 10,
-        "最高阶位": 2
+    "failure_bankrupt": {
+      "id": "failure_bankrupt",
+      "name": "失败：穷困潦倒",
+      "description": "你失去了所有，最终沦落街头。",
+      "conditions": {
+        "max_gold": 0,
+        "max_reputation": 10,
+        "max_rank_level": 2
       },
-      "结局文本": [
+      "ending_text": [
         "你的工坊倒闭了。",
         "",
         "没有订单，没有顾客，没有希望。",
@@ -112,15 +112,15 @@
         "【结局：失败——你辜负了手艺的传承】"
       ]
     },
-    "声名狼藉": {
-      "ID": "failure_disgrace",
-      "名称": "失败：声名狼藉",
-      "描述": "你做出了错误的选择，最终身败名裂。",
-      "条件": {
-        "最高声望": -20,
-        "必需标志": ["printing_mistake"]
+    "failure_disgrace": {
+      "id": "failure_disgrace",
+      "name": "失败：声名狼藉",
+      "description": "你做出了错误的选择，最终身败名裂。",
+      "conditions": {
+        "max_reputation": -20,
+        "required_flags": ["printing_mistake"]
       },
-      "结局文本": [
+      "ending_text": [
         "你的秘密被揭穿了。",
         "",
         "那批劣质印刷品成为了你的罪证。",
@@ -140,16 +140,16 @@
         "【结局：失败——你为自己的选择付出了代价】"
       ]
     },
-    "孤独终老": {
-      "ID": "failure_lonely",
-      "名称": "失败：孤独终老",
-      "描述": "你只顾埋头工作，最终失去了所有重要的人。",
-      "条件": {
-        "最低阶位": 4,
-        "最高关系总值": 0,
-        "最高声望": 30
+    "failure_lonely": {
+      "id": "failure_lonely",
+      "name": "失败：孤独终老",
+      "description": "你只顾埋头工作，最终失去了所有重要的人。",
+      "conditions": {
+        "min_rank_level": 4,
+        "max_relationship_total": 0,
+        "max_reputation": 30
       },
-      "结局文本": [
+      "ending_text": [
         "你成为了不错的匠人，但你失去了更重要的东西。",
         "",
         "你没有朋友，没有爱人，没有可以倾诉的人。",
@@ -168,19 +168,19 @@
         "【结局：失败——你忘记了手艺的真谛】"
       ]
     },
-    "妥协之路": {
-      "ID": "regret_compromise",
-      "名称": "遗憾：妥协之路",
-      "描述": "你选择了妥协，虽然有所成就，但内心始终有遗憾。",
-      "条件": {
-        "最低阶位": 3,
-        "最高阶位": 5,
-        "最低声望": 30,
-        "最高声望": 70,
-        "最低金币": 100,
-        "最高金币": 400
+    "regret_compromise": {
+      "id": "regret_compromise",
+      "name": "遗憾：妥协之路",
+      "description": "你选择了妥协，虽然有所成就，但内心始终有遗憾。",
+      "conditions": {
+        "min_rank_level": 3,
+        "max_rank_level": 5,
+        "min_reputation": 30,
+        "max_reputation": 70,
+        "min_gold": 100,
+        "max_gold": 400
       },
-      "结局文本": [
+      "ending_text": [
         "你成为了受人尊敬的匠人，但你知道，你本可以做得更好。",
         "",
         "你学会了迎合市场，学会了讨好顾客，",
@@ -199,17 +199,17 @@
         "【结局：遗憾——你选择了妥协，但内心始终有梦】"
       ]
     },
-    "未竟之业": {
-      "ID": "regret_unfinished",
-      "名称": "遗憾：未竟之业",
-      "描述": "你本可以成为传奇，但命运没有给你足够的时间。",
-      "条件": {
-        "最低阶位": 4,
-        "最低声望": 50,
-        "最低技艺": 6,
-        "最高技艺": 8
+    "regret_unfinished": {
+      "id": "regret_unfinished",
+      "name": "遗憾：未竟之业",
+      "description": "你本可以成为传奇，但命运没有给你足够的时间。",
+      "conditions": {
+        "min_rank_level": 4,
+        "min_reputation": 50,
+        "min_craft": 6,
+        "max_craft": 8
       },
-      "结局文本": [
+      "ending_text": [
         "你的才华是毋庸置疑的，但命运弄人。",
         "",
         "一场意外夺去了你的右手，",
@@ -228,17 +228,17 @@
         "【结局：遗憾——你本可以成为传奇】"
       ]
     },
-    "选择代价": {
-      "ID": "regret_choice",
-      "名称": "遗憾：选择的代价",
-      "描述": "你做出了选择，但那个选择让你付出了沉重的代价。",
-      "条件": {
-        "最低阶位": 3,
-        "必需标志": ["printing_mistake"],
-        "最低声望": 20,
-        "最高声望": 60
+    "regret_choice": {
+      "id": "regret_choice",
+      "name": "遗憾：选择的代价",
+      "description": "你做出了选择，但那个选择让你付出了沉重的代价。",
+      "conditions": {
+        "min_rank_level": 3,
+        "required_flags": ["printing_mistake"],
+        "min_reputation": 20,
+        "max_reputation": 60
       },
-      "结局文本": [
+      "ending_text": [
         "你试图改变这个世界，但失败了。",
         "",
         "那批劣质印刷品引发了连锁反应，",
@@ -257,19 +257,19 @@
         "【结局：遗憾——你的努力没有白费，但代价太大】"
       ]
     },
-    "安稳人生": {
-      "ID": "normal_life",
-      "名称": "平凡：安稳人生",
-      "描述": "你没有成为传奇，但你过上了安稳的生活。",
-      "条件": {
-        "最低阶位": 2,
-        "最高阶位": 4,
-        "最低声望": 20,
-        "最高声望": 60,
-        "最低金币": 50,
-        "最高金币": 300
+    "normal_life": {
+      "id": "normal_life",
+      "name": "平凡：安稳人生",
+      "description": "你没有成为传奇，但你过上了安稳的生活。",
+      "conditions": {
+        "min_rank_level": 2,
+        "max_rank_level": 4,
+        "min_reputation": 20,
+        "max_reputation": 60,
+        "min_gold": 50,
+        "max_gold": 300
       },
-      "结局文本": [
+      "ending_text": [
         "你没有成为巨匠，也没有改变世界。",
         "你只是一个普通的匠人，过着普通的生活。",
         "",

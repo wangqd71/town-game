@@ -1,383 +1,383 @@
 {
-  "订单": [
+  "orders": [
     {
-      "ID": "order_shoes",
-      "名称": "修理马蹄铁",
-      "描述": "一个农夫需要修理几块马蹄铁。",
-      "职业": "blacksmith",
-      "最低阶位": 0,
-      "金币": 15,
-      "经验": 10,
-      "声望": 5,
-      "难度": "craft"
+      "id": "order_shoes",
+      "name": "修理马蹄铁",
+      "description": "一个农夫需要修理几块马蹄铁。",
+      "profession": "blacksmith",
+      "min_rank_level": 0,
+      "gold": 15,
+      "exp": 10,
+      "reputation": 5,
+      "difficulty": "craft"
     },
     {
-      "ID": "order_sword",
-      "名称": "锻造短剑",
-      "描述": "一个退伍军人需要一把防身短剑。",
-      "职业": "blacksmith",
-      "最低阶位": 1,
-      "金币": 60,
-      "经验": 25,
-      "声望": 10,
-      "难度": "craft"
+      "id": "order_sword",
+      "name": "锻造短剑",
+      "description": "一个退伍军人需要一把防身短剑。",
+      "profession": "blacksmith",
+      "min_rank_level": 1,
+      "gold": 60,
+      "exp": 25,
+      "reputation": 10,
+      "difficulty": "craft"
     },
     {
-      "ID": "order_coat",
-      "名称": "修补外套",
-      "描述": "一个工人需要修补破旧的工作外套。",
-      "职业": "tailor",
-      "最低阶位": 0,
-      "金币": 10,
-      "经验": 10,
-      "声望": 5,
-      "难度": "craft"
+      "id": "order_coat",
+      "name": "修补外套",
+      "description": "一个工人需要修补破旧的工作外套。",
+      "profession": "tailor",
+      "min_rank_level": 0,
+      "gold": 10,
+      "exp": 10,
+      "reputation": 5,
+      "difficulty": "craft"
     },
     {
-      "ID": "order_dress",
-      "名称": "制作连衣裙",
-      "描述": "一位小姐需要一件参加舞会的连衣裙。",
-      "职业": "tailor",
-      "最低阶位": 1,
-      "金币": 50,
-      "经验": 25,
-      "声望": 10,
-      "难度": "craft"
+      "id": "order_dress",
+      "name": "制作连衣裙",
+      "description": "一位小姐需要一件参加舞会的连衣裙。",
+      "profession": "tailor",
+      "min_rank_level": 1,
+      "gold": 50,
+      "exp": 25,
+      "reputation": 10,
+      "difficulty": "craft"
     },
     {
-      "ID": "order_repair_watch",
-      "名称": "修理怀表",
-      "描述": "一位绅士的怀表停了，需要修理。",
-      "职业": "watchmaker",
-      "最低阶位": 0,
-      "金币": 20,
-      "经验": 10,
-      "声望": 5,
-      "难度": "craft"
+      "id": "order_repair_watch",
+      "name": "修理怀表",
+      "description": "一位绅士的怀表停了，需要修理。",
+      "profession": "watchmaker",
+      "min_rank_level": 0,
+      "gold": 20,
+      "exp": 10,
+      "reputation": 5,
+      "difficulty": "craft"
     },
     {
-      "ID": "order_complex_watch",
-      "名称": "修复古董怀表",
-      "描述": "一位收藏家需要修复一只18世纪的古董怀表。",
-      "职业": "watchmaker",
-      "最低阶位": 1,
-      "金币": 80,
-      "经验": 30,
-      "声望": 15,
-      "难度": "craft"
+      "id": "order_complex_watch",
+      "name": "修复古董怀表",
+      "description": "一位收藏家需要修复一只18世纪的古董怀表。",
+      "profession": "watchmaker",
+      "min_rank_level": 1,
+      "gold": 80,
+      "exp": 30,
+      "reputation": 15,
+      "difficulty": "craft"
     },
     {
-      "ID": "order_pamphlet",
-      "名称": "印刷传单",
-      "描述": "一家店铺需要印刷开业传单。",
-      "职业": "printer",
-      "最低阶位": 0,
-      "金币": 12,
-      "经验": 10,
-      "声望": 5,
-      "难度": "craft"
+      "id": "order_pamphlet",
+      "name": "印刷传单",
+      "description": "一家店铺需要印刷开业传单。",
+      "profession": "printer",
+      "min_rank_level": 0,
+      "gold": 12,
+      "exp": 10,
+      "reputation": 5,
+      "difficulty": "craft"
     },
     {
-      "ID": "order_book",
-      "名称": "装帧诗集",
-      "描述": "一位诗人需要装帧他的诗集。",
-      "职业": "printer",
-      "最低阶位": 1,
-      "金币": 55,
-      "经验": 25,
-      "声望": 10,
-      "难度": "craft"
+      "id": "order_book",
+      "name": "装帧诗集",
+      "description": "一位诗人需要装帧他的诗集。",
+      "profession": "printer",
+      "min_rank_level": 1,
+      "gold": 55,
+      "exp": 25,
+      "reputation": 10,
+      "difficulty": "craft"
     }
   ],
-  "商店物品": {
-    "铁匠": [
-      { "名称": "优质铁料", "花费": 20, "描述": "上好的铁料，适合锻造", "给予": { "技艺": 1 } },
-      { "名称": "精钢锻锤", "花费": 50, "描述": "一把趁手的锻锤", "给予": { "技艺": 1 } },
-      { "名称": "淬火秘方", "花费": 80, "描述": "一本记载特殊淬火技术的小册子", "给予": { "技艺": 2 } }
+  "shop_items": {
+    "blacksmith": [
+      { "name": "优质铁料", "cost": 20, "description": "上好的铁料，适合锻造", "grants": { "craft": 1 } },
+      { "name": "精钢锻锤", "cost": 50, "description": "一把趁手的锻锤", "grants": { "craft": 1 } },
+      { "name": "淬火秘方", "cost": 80, "description": "一本记载特殊淬火技术的小册子", "grants": { "craft": 2 } }
     ],
-    "裁缝": [
-      { "名称": "丝绸布料", "花费": 25, "描述": "上好的丝绸面料", "给予": { "技艺": 1 } },
-      { "名称": "精钢剪刀", "花费": 45, "描述": "一把锋利的裁缝剪", "给予": { "技艺": 1 } },
-      { "名称": "时装图样", "花费": 70, "描述": "来自巴黎的最新时装设计", "给予": { "技艺": 2 } }
+    "tailor": [
+      { "name": "丝绸布料", "cost": 25, "description": "上好的丝绸面料", "grants": { "craft": 1 } },
+      { "name": "精钢剪刀", "cost": 45, "description": "一把锋利的裁缝剪", "grants": { "craft": 1 } },
+      { "name": "时装图样", "cost": 70, "description": "来自巴黎的最新时装设计", "grants": { "craft": 2 } }
     ],
-    "钟表匠": [
-      { "名称": "精密放大镜", "花费": 30, "描述": "高倍放大镜，方便观察细节", "给予": { "技艺": 1 } },
-      { "名称": "瑞士齿轮组", "花费": 60, "描述": "精密的瑞士齿轮", "给予": { "技艺": 1, "智慧": 1 } },
-      { "名称": "钟表秘典", "花费": 100, "描述": "一本珍贵的钟表制作古籍", "给予": { "技艺": 2, "智慧": 1 } }
+    "watchmaker": [
+      { "name": "精密放大镜", "cost": 30, "description": "高倍放大镜，方便观察细节", "grants": { "craft": 1 } },
+      { "name": "瑞士齿轮组", "cost": 60, "description": "精密的瑞士齿轮", "grants": { "craft": 1, "wit": 1 } },
+      { "name": "钟表秘典", "cost": 100, "description": "一本珍贵的钟表制作古籍", "grants": { "craft": 2, "wit": 1 } }
     ],
-    "印刷工": [
-      { "名称": "优质活字", "花费": 20, "描述": "一套新的铅活字", "给予": { "技艺": 1 } },
-      { "名称": "进口油墨", "花费": 40, "描述": "来自法国的优质油墨", "给予": { "技艺": 1 } },
-      { "名称": "印刷手册", "花费": 75, "描述": "一本详细的印刷技术手册", "给予": { "技艺": 1, "智慧": 1 } }
+    "printer": [
+      { "name": "优质活字", "cost": 20, "description": "一套新的铅活字", "grants": { "craft": 1 } },
+      { "name": "进口油墨", "cost": 40, "description": "来自法国的优质油墨", "grants": { "craft": 1 } },
+      { "name": "印刷手册", "cost": 75, "description": "一本详细的印刷技术手册", "grants": { "craft": 1, "wit": 1 } }
     ],
-    "通用": [
-      { "名称": "麦酒", "花费": 5, "描述": "一杯暖身的麦酒", "给予": {} },
-      { "名称": "面包", "花费": 3, "描述": "一块充饥的面包", "给予": {} },
-      { "名称": "旧书", "花费": 10, "描述": "一本便宜的旧书，也许能学到些什么", "给予": { "智慧": 1 } },
-      { "名称": "镜子", "花费": 8, "描述": "一面小镜子，可以练习表情管理", "给予": { "魅力": 1 } },
-      { "名称": "手套", "花费": 12, "描述": "一双柔软的皮手套，干活时保护双手", "给予": { "体力": 1 } }
+    "general": [
+      { "name": "麦酒", "cost": 5, "description": "一杯暖身的麦酒", "grants": {} },
+      { "name": "面包", "cost": 3, "description": "一块充饥的面包", "grants": {} },
+      { "name": "旧书", "cost": 10, "description": "一本便宜的旧书，也许能学到些什么", "grants": { "wit": 1 } },
+      { "name": "镜子", "cost": 8, "description": "一面小镜子，可以练习表情管理", "grants": { "charm": 1 } },
+      { "name": "手套", "cost": 12, "description": "一双柔软的皮手套，干活时保护双手", "grants": { "grit": 1 } }
     ]
   },
-  "随机事件": [
+  "random_events": [
     {
-      "ID": "rainy_day",
-      "名称": "雨天",
-      "文本": "窗外下起了大雨。工坊里弥漫着潮湿的空气，炉火噼啪作响。这样的天气适合静下心来练习基本功。",
-      "效果": { "经验": 5 },
-      "类型": "neutral"
+      "id": "rainy_day",
+      "name": "雨天",
+      "text": "窗外下起了大雨。工坊里弥漫着潮湿的空气，炉火噼啪作响。这样的天气适合静下心来练习基本功。",
+      "effects": { "exp": 5 },
+      "type": "neutral"
     },
     {
-      "ID": "firewood_shortage",
-      "名称": "柴火不足",
-      "文本": "工坊的柴火快用完了。你花了半天时间去城外捡柴，回来时浑身湿透，但学到了如何辨别不同木材的特性。",
-      "效果": { "属性": "grit", "数值": 1, "经验": 8 },
-      "类型": "negative"
+      "id": "firewood_shortage",
+      "name": "柴火不足",
+      "text": "工坊的柴火快用完了。你花了半天时间去城外捡柴，回来时浑身湿透，但学到了如何辨别不同木材的特性。",
+      "effects": { "attribute": "grit", "value": 1, "exp": 8 },
+      "type": "negative"
     },
     {
-      "ID": "traveling_merchant",
-      "名称": "行商路过",
-      "文本": "一个行商路过工坊，带来了远方的消息和稀有的材料。他愿意便宜卖给你一些好东西。",
-      "效果": { "金币": 15 },
-      "类型": "positive"
+      "id": "traveling_merchant",
+      "name": "行商路过",
+      "text": "一个行商路过工坊，带来了远方的消息和稀有的材料。他愿意便宜卖给你一些好东西。",
+      "effects": { "gold": 15 },
+      "type": "positive"
     },
     {
-      "ID": "neighbor_help",
-      "名称": "邻居互助",
-      "文本": "隔壁的木匠师傅需要帮忙修理门锁。你帮他修好了，他送了你一些上好的木料作为谢礼。",
-      "效果": { "声望": 5, "经验": 8 },
-      "类型": "positive"
+      "id": "neighbor_help",
+      "name": "邻居互助",
+      "text": "隔壁的木匠师傅需要帮忙修理门锁。你帮他修好了，他送了你一些上好的木料作为谢礼。",
+      "effects": { "reputation": 5, "exp": 8 },
+      "type": "positive"
     },
     {
-      "ID": "sick_day",
-      "名称": "生病",
-      "文本": "你感染了风寒，不得不在床上躺了两天。虽然耽误了进度，但也让你明白了健康的重要性。",
-      "效果": { "属性": "grit", "数值": 1 },
-      "类型": "negative"
+      "id": "sick_day",
+      "name": "生病",
+      "text": "你感染了风寒，不得不在床上躺了两天。虽然耽误了进度，但也让你明白了健康的重要性。",
+      "effects": { "attribute": "grit", "value": 1 },
+      "type": "negative"
     },
     {
-      "ID": "inspiration",
-      "名称": "灵感闪现",
-      "文本": "你在工作时突然有了一个新的想法。你尝试将两种不同的技法结合，意外地创造出了一种新的纹样。",
-      "效果": { "经验": 15, "属性": "craft", "数值": 1 },
-      "类型": "positive"
+      "id": "inspiration",
+      "name": "灵感闪现",
+      "text": "你在工作时突然有了一个新的想法。你尝试将两种不同的技法结合，意外地创造出了一种新的纹样。",
+      "effects": { "exp": 15, "attribute": "craft", "value": 1 },
+      "type": "positive"
     },
     {
-      "ID": "newspaper",
-      "名称": "读报",
-      "文本": "你在酒馆里读到一份报纸，上面报道了工艺美术运动的消息。威廉·莫里斯呼吁恢复手工艺的价值，这让你深受触动。",
-      "效果": { "经验": 10, "属性": "wit", "数值": 1, "标志": ["heard_arts_crafts"] },
-      "类型": "positive"
+      "id": "newspaper",
+      "name": "读报",
+      "text": "你在酒馆里读到一份报纸，上面报道了工艺美术运动的消息。威廉·莫里斯呼吁恢复手工艺的价值，这让你深受触动。",
+      "effects": { "exp": 10, "attribute": "wit", "value": 1, "flag": ["heard_arts_crafts"] },
+      "type": "positive"
     },
     {
-      "ID": "street_performer",
-      "名称": "街头艺人",
-      "文本": "一个街头艺人在广场上表演。他精彩的表演吸引了众多观众，也让你意识到手艺不仅是技术，更是艺术。",
-      "效果": { "属性": "charm", "数值": 1, "经验": 8 },
-      "类型": "positive"
+      "id": "street_performer",
+      "name": "街头艺人",
+      "text": "一个街头艺人在广场上表演。他精彩的表演吸引了众多观众，也让你意识到手艺不仅是技术，更是艺术。",
+      "effects": { "attribute": "charm", "value": 1, "exp": 8 },
+      "type": "positive"
     },
     {
-      "ID": "debate",
-      "名称": "工人辩论",
-      "文本": "几个工人在酒馆里激烈辩论。你旁听了一会儿，学会了如何用逻辑说服别人。",
-      "效果": { "属性": "wit", "数值": 1, "经验": 8 },
-      "类型": "positive"
+      "id": "debate",
+      "name": "工人辩论",
+      "text": "几个工人在酒馆里激烈辩论。你旁听了一会儿，学会了如何用逻辑说服别人。",
+      "effects": { "attribute": "wit", "value": 1, "exp": 8 },
+      "type": "positive"
     },
     {
-      "ID": "physical_labor",
-      "名称": "体力劳动",
-      "文本": "你帮邻居搬运了一批沉重的货物。虽然累得腰酸背痛，但你的体力明显增强了。",
-      "效果": { "属性": "grit", "数值": 1, "经验": 5 },
-      "类型": "positive"
+      "id": "physical_labor",
+      "name": "体力劳动",
+      "text": "你帮邻居搬运了一批沉重的货物。虽然累得腰酸背痛，但你的体力明显增强了。",
+      "effects": { "attribute": "grit", "value": 1, "exp": 5 },
+      "type": "positive"
     },
     {
-      "ID": "art_exhibition",
-      "名称": "艺术展览",
-      "文本": "你参观了一场小型艺术展览。精美的作品让你大开眼界，也让你对自己的手艺有了新的理解。",
-      "效果": { "属性": "craft", "数值": 1, "attribute2": "charm", "value2": 1, "经验": 10 },
-      "类型": "positive"
+      "id": "art_exhibition",
+      "name": "艺术展览",
+      "text": "你参观了一场小型艺术展览。精美的作品让你大开眼界，也让你对自己的手艺有了新的理解。",
+      "effects": { "attribute": "craft", "value": 1, "attribute2": "charm", "value2": 1, "exp": 10 },
+      "type": "positive"
     },
     {
-      "ID": "mystery_customer",
-      "名称": "神秘顾客",
-      "文本": "一位神秘的顾客来到工坊，他不买东西，只是观察你的工作。临走时，他留下了一句意味深长的话：'真正的匠人，不只用手，更用心。'",
-      "效果": { "属性": "wit", "数值": 1, "attribute2": "craft", "value2": 1, "经验": 12, "标志": ["met_mystery_man"] },
-      "类型": "positive"
+      "id": "mystery_customer",
+      "name": "神秘顾客",
+      "text": "一位神秘的顾客来到工坊，他不买东西，只是观察你的工作。临走时，他留下了一句意味深长的话：'真正的匠人，不只用手，更用心。'",
+      "effects": { "attribute": "wit", "value": 1, "attribute2": "craft", "value2": 1, "exp": 12, "flag": ["met_mystery_man"] },
+      "type": "positive"
     }
   ],
-  "支线任务": [
+  "side_quests": [
     {
-      "ID": "side_quest_debate",
-      "名称": "工人辩论赛",
-      "描述": "酒馆里举办了一场辩论赛，主题是'手工艺 vs 机器生产'。参加辩论可以锻炼口才和思维。",
-      "最低智慧": 4,
-      "最低魅力": 3,
-      "金币": 30,
-      "经验": 25,
-      "声望": 10,
-      "属性奖励": "charm"
+      "id": "side_quest_debate",
+      "name": "工人辩论赛",
+      "description": "酒馆里举办了一场辩论赛，主题是'手工艺 vs 机器生产'。参加辩论可以锻炼口才和思维。",
+      "min_wit": 4,
+      "min_charm": 3,
+      "gold": 30,
+      "exp": 25,
+      "reputation": 10,
+      "attribute_reward": "charm"
     },
     {
-      "ID": "side_quest_teach",
-      "名称": "教授学徒",
-      "描述": "一个年轻人想学习你的手艺。作为老师，你不仅能传授知识，还能加深自己的理解。",
-      "最低技艺": 5,
-      "最低智慧": 4,
-      "金币": 40,
-      "经验": 30,
-      "声望": 15,
-      "属性奖励": "wit"
+      "id": "side_quest_teach",
+      "name": "教授学徒",
+      "description": "一个年轻人想学习你的手艺。作为老师，你不仅能传授知识，还能加深自己的理解。",
+      "min_craft": 5,
+      "min_wit": 4,
+      "gold": 40,
+      "exp": 30,
+      "reputation": 15,
+      "attribute_reward": "wit"
     },
     {
-      "ID": "side_quest_invention",
-      "名称": "发明新工具",
-      "描述": "你想发明一种新的工具来提高工作效率。这需要智慧和创造力。",
-      "最低智慧": 6,
-      "最低技艺": 4,
-      "金币": 60,
-      "经验": 40,
-      "声望": 20,
-      "属性奖励": "wit"
+      "id": "side_quest_invention",
+      "name": "发明新工具",
+      "description": "你想发明一种新的工具来提高工作效率。这需要智慧和创造力。",
+      "min_wit": 6,
+      "min_craft": 4,
+      "gold": 60,
+      "exp": 40,
+      "reputation": 20,
+      "attribute_reward": "wit"
     },
     {
-      "ID": "side_quest_negotiate",
-      "名称": "谈判大师",
-      "描述": "霍尔先生需要人帮他谈判一笔大生意。如果你能帮他谈成，报酬丰厚。",
-      "最低魅力": 5,
-      "最低智慧": 4,
-      "金币": 80,
-      "经验": 35,
-      "声望": 25,
-      "属性奖励": "charm"
+      "id": "side_quest_negotiate",
+      "name": "谈判大师",
+      "description": "霍尔先生需要人帮他谈判一笔大生意。如果你能帮他谈成，报酬丰厚。",
+      "min_charm": 5,
+      "min_wit": 4,
+      "gold": 80,
+      "exp": 35,
+      "reputation": 25,
+      "attribute_reward": "charm"
     },
     {
-      "ID": "side_quest_endurance",
-      "名称": "耐力考验",
-      "描述": "你需要连续工作三天三夜完成一批紧急订单。这是对你体力的极大考验。",
-      "最低体力": 5,
-      "最低技艺": 4,
-      "金币": 50,
-      "经验": 30,
-      "声望": 15,
-      "属性奖励": "grit"
+      "id": "side_quest_endurance",
+      "name": "耐力考验",
+      "description": "你需要连续工作三天三夜完成一批紧急订单。这是对你体力的极大考验。",
+      "min_grit": 5,
+      "min_craft": 4,
+      "gold": 50,
+      "exp": 30,
+      "reputation": 15,
+      "attribute_reward": "grit"
     },
 {
-  "ID": "side_quest_study",
-  "名称": "学术研究",
-  "描述": "一位学者正在研究手工艺的历史。他需要你的专业知识来完成他的著作。",
-  "最低智慧": 6,
-  "最低技艺": 3,
-  "金币": 45,
-  "经验": 35,
-  "声望": 20,
-  "属性奖励": "wit"
+  "id": "side_quest_study",
+  "name": "学术研究",
+  "description": "一位学者正在研究手工艺的历史。他需要你的专业知识来完成他的著作。",
+  "min_wit": 6,
+  "min_craft": 3,
+  "gold": 45,
+  "exp": 35,
+  "reputation": 20,
+  "attribute_reward": "wit"
 },
 {
-  "ID": "side_quest_factory_investigation",
-  "名称": "工厂调查",
-  "描述": "帮助汤姆调查工厂的劣质棉花事件。这需要智慧和勇气。",
-  "最低智慧": 4,
-  "最低体力": 3,
-  "金币": 50,
-  "经验": 30,
-  "声望": 15,
-  "属性奖励": "grit",
-  "需要标志": "know_factory_secret"
+  "id": "side_quest_factory_investigation",
+  "name": "工厂调查",
+  "description": "帮助汤姆调查工厂的劣质棉花事件。这需要智慧和勇气。",
+  "min_wit": 4,
+  "min_grit": 3,
+  "gold": 50,
+  "exp": 30,
+  "reputation": 15,
+  "attribute_reward": "grit",
+  "requires_flag": "know_factory_secret"
 },
 {
-  "ID": "side_quest_church_repair",
-  "名称": "教堂修缮",
-  "描述": "帮助阿尔伯特牧师修缮教堂的铁门。这是一份神圣的工作。",
-  "最低技艺": 4,
-  "最低魅力": 2,
-  "金币": 35,
-  "经验": 25,
-  "声望": 20,
-  "属性奖励": "craft",
-  "需要标志": "met_priest"
+  "id": "side_quest_church_repair",
+  "name": "教堂修缮",
+  "description": "帮助阿尔伯特牧师修缮教堂的铁门。这是一份神圣的工作。",
+  "min_craft": 4,
+  "min_charm": 2,
+  "gold": 35,
+  "exp": 25,
+  "reputation": 20,
+  "attribute_reward": "craft",
+  "requires_flag": "met_priest"
 },
 {
-  "ID": "side_quest_street_info",
-  "名称": "街头情报",
-  "描述": "从小汤米那里购买关于贵族区的情报。这需要金钱和魅力。",
-  "最低魅力": 3,
-  "最低智慧": 2,
-  "金币": 20,
-  "经验": 15,
-  "声望": 10,
-  "属性奖励": "charm",
-  "需要标志": "met_street_kid"
+  "id": "side_quest_street_info",
+  "name": "街头情报",
+  "description": "从小汤米那里购买关于贵族区的情报。这需要金钱和魅力。",
+  "min_charm": 3,
+  "min_wit": 2,
+  "gold": 20,
+  "exp": 15,
+  "reputation": 10,
+  "attribute_reward": "charm",
+  "requires_flag": "met_street_kid"
 },
 {
-  "ID": "side_quest_combat_training",
-  "名称": "战斗训练",
-  "描述": "接受杰克的战斗训练。这将增强你的体魄和意志。",
-  "最低体力": 3,
-  "最低技艺": 2,
-  "金币": 25,
-  "经验": 20,
-  "声望": 10,
-  "属性奖励": "grit",
-  "需要标志": "met_soldier"
+  "id": "side_quest_combat_training",
+  "name": "战斗训练",
+  "description": "接受杰克的战斗训练。这将增强你的体魄和意志。",
+  "min_grit": 3,
+  "min_craft": 2,
+  "gold": 25,
+  "exp": 20,
+  "reputation": 10,
+  "attribute_reward": "grit",
+  "requires_flag": "met_soldier"
 },
 {
-  "ID": "side_quest_art_discussion",
-  "名称": "艺术探讨",
-  "描述": "与莉莉讨论工艺美术运动。这将拓宽你的视野。",
-  "最低智慧": 4,
-  "最低魅力": 3,
-  "金币": 30,
-  "经验": 25,
-  "声望": 15,
-  "属性奖励": "wit",
-  "需要标志": "met_merchant_daughter"
+  "id": "side_quest_art_discussion",
+  "name": "艺术探讨",
+  "description": "与莉莉讨论工艺美术运动。这将拓宽你的视野。",
+  "min_wit": 4,
+  "min_charm": 3,
+  "gold": 30,
+  "exp": 25,
+  "reputation": 15,
+  "attribute_reward": "wit",
+  "requires_flag": "met_merchant_daughter"
 },
 {
-  "ID": "side_quest_rose_commission",
-  "名称": "罗丝夫人的委托",
-  "描述": "完成罗丝夫人特别委托的手工艺品。这需要高超的技艺。",
-  "最低技艺": 6,
-  "最低魅力": 4,
-  "金币": 100,
-  "经验": 50,
-  "声望": 30,
-  "属性奖励": "craft",
-  "需要标志": "impressed_lady_rose"
+  "id": "side_quest_rose_commission",
+  "name": "罗丝夫人的委托",
+  "description": "完成罗丝夫人特别委托的手工艺品。这需要高超的技艺。",
+  "min_craft": 6,
+  "min_charm": 4,
+  "gold": 100,
+  "exp": 50,
+  "reputation": 30,
+  "attribute_reward": "craft",
+  "requires_flag": "impressed_lady_rose"
 },
 {
-  "ID": "side_quest_journalist_help",
-  "名称": "记者的帮助",
-  "描述": "帮助艾奇印刷秘密刊物。这需要智慧和勇气。",
-  "最低智慧": 5,
-  "最低体力": 4,
-  "金币": 40,
-  "经验": 35,
-  "声望": 20,
-  "属性奖励": "wit",
-  "需要标志": "met_journalist"
+  "id": "side_quest_journalist_help",
+  "name": "记者的帮助",
+  "description": "帮助艾奇印刷秘密刊物。这需要智慧和勇气。",
+  "min_wit": 5,
+  "min_grit": 4,
+  "gold": 40,
+  "exp": 35,
+  "reputation": 20,
+  "attribute_reward": "wit",
+  "requires_flag": "met_journalist"
 },
 {
-  "ID": "side_quest_iris_friendship",
-  "名称": "艾丽丝的友谊",
-  "描述": "与艾丽丝一起完成一件合作作品。这将加深你们的友谊。",
-  "最低技艺": 4,
-  "最低魅力": 3,
-  "金币": 35,
-  "经验": 30,
-  "声望": 15,
-  "属性奖励": "charm",
-  "需要标志": "rival_friendly"
+  "id": "side_quest_iris_friendship",
+  "name": "艾丽丝的友谊",
+  "description": "与艾丽丝一起完成一件合作作品。这将加深你们的友谊。",
+  "min_craft": 4,
+  "min_charm": 3,
+  "gold": 35,
+  "exp": 30,
+  "reputation": 15,
+  "attribute_reward": "charm",
+  "requires_flag": "rival_friendly"
 },
 {
-  "ID": "side_quest_merchant_deal",
-  "名称": "商业交易",
-  "描述": "帮助霍尔先生完成一笔大生意。这需要谈判技巧。",
-  "最低魅力": 5,
-  "最低智慧": 4,
-  "金币": 70,
-  "经验": 40,
-  "声望": 25,
-  "属性奖励": "charm",
-  "需要标志": "met_merchant"
+  "id": "side_quest_merchant_deal",
+  "name": "商业交易",
+  "description": "帮助霍尔先生完成一笔大生意。这需要谈判技巧。",
+  "min_charm": 5,
+  "min_wit": 4,
+  "gold": 70,
+  "exp": 40,
+  "reputation": 25,
+  "attribute_reward": "charm",
+  "requires_flag": "met_merchant"
 }
 ]
 }

@@ -41,30 +41,24 @@ def run_dialogue(node, player, npc_name=""):
         return effects
 
     elif node.get("type") == "skill_check":
-        attr_map = {
-            "æè?: "craft",
-            "ä½å": "grit",
-            "æºæ§": "wit",
-            "é­å": "charm"
-        }
-        attr = attr_map.get(node.get("å±æ?, ""), node.get("å±æ?, node.get("attribute", "craft")))
-        difficulty = node.get("é¾åº¦", node.get("difficulty", 5))
+        attr = node.get("attribute", "craft")
+        difficulty = node.get("difficulty", 5)
         success = player.skill_check(attr, difficulty)
         val = getattr(player, attr, 0)
         skill_check(attr.title(), val, difficulty)
 
         if success:
-            success_node = node.get("æå", node.get("success"))
+            success_node = node.get("success")
             if success_node:
                 return run_dialogue(success_node, player, npc_name)
         else:
-            fail_node = node.get("å¤±è´¥", node.get("fail"))
+            fail_node = node.get("fail")
             if fail_node:
                 return run_dialogue(fail_node, player, npc_name)
         return effects
 
     elif node.get("type") == "effect":
-        apply_effects(node.get("ææ", node.get("effects", {})), player)
+        apply_effects(node.get("effects", {}), player)
         choices = node.get("choices", [])
         if choices:
             return handle_choices(choices, player, npc_name)
@@ -79,18 +73,18 @@ def run_dialogue(node, player, npc_name=""):
 def handle_choices(choices, player, npc_name=""):
     filtered = []
     for choice in choices:
-        req = choice.get("requires", choice.get("éæ±?, {}))
-        if req.get("flag") and not player.has_flag(req["标志"]):
+        req = choice.get("requires", {})
+        if req.get("flag") and not player.has_flag(req["flag"]):
             continue
-        if req.get("min_gold") and player.gold < req["最低金币"]:
+        if req.get("min_gold") and player.gold < req["min_gold"]:
             continue
-        if req.get("min_reputation") and player.reputation < req["最低声望"]:
+        if req.get("min_reputation") and player.reputation < req["min_reputation"]:
             continue
-        if req.get("skill") and not player.has_skill(req["技能"]):
+        if req.get("skill") and not player.has_skill(req["skill"]):
             continue
-        if req.get("attribute") or req.get("å±æ?):
-            attr = req.get("attribute", req.get("å±æ?))
-            val = req.get("value", req.get("æ°å?, 5))
+        if req.get("attribute"):
+            attr = req["attribute"]
+            val = req.get("value", 5)
             if getattr(player, attr, 0) < val:
                 continue
         filtered.append(choice)
@@ -105,11 +99,11 @@ def handle_choices(choices, player, npc_name=""):
     effects = {}
 
     if chosen.get("set_flag"):
-        for flag in chosen["设置标志"]:
+        for flag in chosen["set_flag"]:
             player.set_flag(flag)
 
-    if chosen.get("effects") or chosen.get("ææ"):
-        apply_effects(chosen.get("effects", chosen.get("ææ", {})), player)
+    if chosen.get("effects"):
+        apply_effects(chosen["effects"], player)
 
     next_node = chosen.get("next")
     if next_node:
@@ -120,28 +114,28 @@ def handle_choices(choices, player, npc_name=""):
 
 
 def apply_effects(effects, player):
-    if "éå¸" in effects:
-        player.add_gold(effects["éå¸"])
-        if effects["éå¸"] > 0:
-            print_reward("éå¸", effects["éå¸"])
-        elif effects["éå¸"] < 0:
+    if "gold" in effects:
+        player.add_gold(effects["gold"])
+        if effects["gold"] > 0:
+            print_reward("金币", effects["gold"])
+        elif effects["gold"] < 0:
             from utils.display import print_penalty
-            print_penalty("éå¸", abs(effects["éå¸"]))
+            print_penalty("金币", abs(effects["gold"]))
 
-    if "å£°æ" in effects:
-        player.add_reputation(effects["å£°æ"])
-        if effects["å£°æ"] > 0:
-            print_reward("å£°æ", effects["å£°æ"])
+    if "reputation" in effects:
+        player.add_reputation(effects["reputation"])
+        if effects["reputation"] > 0:
+            print_reward("声望", effects["reputation"])
 
-    if "ç»éª" in effects:
-        leveled = player.add_exp(effects["ç»éª"])
-        print_reward("ç»éª", effects["ç»éª"])
+    if "exp" in effects:
+        leveled = player.add_exp(effects["exp"])
+        print_reward("经验", effects["exp"])
         if leveled:
-            print_system("ç­çº§æåï¼?)
+            print_system("等级提升！")
 
-    if "å±æ? in effects:
-        attr = effects["å±æ?]
-        val = effects.get("æ°å?, 1)
+    if "attribute" in effects:
+        attr = effects["attribute"]
+        val = effects.get("value", 1)
         if hasattr(player, attr):
             old_val = getattr(player, attr)
             player.add_attribute(attr, val)
@@ -149,36 +143,37 @@ def apply_effects(effects, player):
             if new_val > old_val:
                 print_reward(attr.title(), val)
             else:
-                print_system(f"{attr.title()} å·²è¾¾ä¸éï¼{MAX_ATTRIBUTE}ï¼?)
+                print_system(f"{attr.title()} 已达上限（{MAX_ATTRIBUTE}）")
 
-    if "æè? in effects:
-        for skill_name in effects["æè?]:
+    if "skills" in effects:
+        for skill_name in effects["skills"]:
             if player.add_skill(skill_name):
-                print_reward("ä¹ å¾æè?, skill_name)
+                print_reward("习得技能", skill_name)
                 # Show skill event if available
                 from game.skills import load_professions
                 profs = load_professions()
                 tree = profs.get(player.profession, {}).get("skill_tree", {})
                 for branch, skills in tree.items():
                     for skill in skills:
-                        if skill\["Ãû³Æ"\] == skill_name:
+                        if skill["name"] == skill_name:
                             show_skill_event(skill)
                             break
 
     if "relationship" in effects:
-        for npc_id, val in effects["关系"].items():
+        for npc_id, val in effects["relationship"].items():
             player.modify_relationship(npc_id, val)
 
-    # æææè½è§£é?    if "æææè? in effects:
+    # 战斗技能解锁
+    if "combat_skills" in effects:
         from game.combat_skills import unlock_combat_skill
-        for skill_id in effects["æææè?]:
+        for skill_id in effects["combat_skills"]:
             success, msg = unlock_combat_skill(player, skill_id)
             if success:
-                print_reward("ä¹ å¾æææè?, msg)
+                print_reward("习得战斗技能", msg)
 
-    # è§¦åææï¼æäºè§¦åï¼
-    if "è§¦åææ" in effects:
-        combat_data = effects["è§¦åææ"]
+    # 触发战斗（故事触发）
+    if "trigger_combat" in effects:
+        combat_data = effects["trigger_combat"]
         enemy_id = combat_data.get("enemy_id")
         if enemy_id:
             from game.combat import load_enemies
@@ -186,33 +181,35 @@ def apply_effects(effects, player):
             if enemy_id in enemies:
                 from utils.input import confirm
                 enemy_data = enemies[enemy_id]
-                print_system(f"é­éæäºº: {enemy_data['name']}ï¼?)
-                if confirm("æ¯å¦è¿æï¼?):
-                    # è¿ééè¦è°ç?handle_combatï¼ä½ç±äºå¾ªç¯ä¾èµï¼æä»¬è¿åæææ°æ?                    # ç±è°ç¨èå¤ç?                    return {"trigger_combat": enemy_data}
+                print_system(f"遭遇敌人: {enemy_data['name']}！")
+                if confirm("是否迎战？"):
+                    # 这里需要调用 handle_combat，但由于循环依赖，我们返回战斗数据
+                    # 由调用者处理
+                    return {"trigger_combat": enemy_data}
 
 
 def show_skill_event(skill_data):
-    """æ¾ç¤ºæè½çå·ä½äºä»¶åç©å?""
+    """显示技能的具体事件和物品"""
     if not skill_data:
         return
 
     print()
-    print(color("  âââââââââââââââââââââââââââââââââââââââ?, "cyan"))
-    print(color(f"  æè½ä¹ å¾? {skill_data['name']}", "bold", "cyan"))
-    print(color("  âââââââââââââââââââââââââââââââââââââââ?, "cyan"))
+    print(color("  ═══════════════════════════════════════", "cyan"))
+    print(color(f"  技能习得: {skill_data['name']}", "bold", "cyan"))
+    print(color("  ═══════════════════════════════════════", "cyan"))
     print()
 
     if skill_data.get("event"):
-        print(color("  [äºä»¶]", "yellow", "bold"))
+        print(color("  [事件]", "yellow", "bold"))
         print(color(f"  {skill_data['event']}", "white"))
         print()
 
     if skill_data.get("item"):
-        print(color("  [è·å¾ç©å]", "green", "bold"))
+        print(color("  [获得物品]", "green", "bold"))
         print(color(f"  {skill_data['item']}", "green"))
         print()
 
     if skill_data.get("description"):
-        print(color("  [æè¿°]", "dim"))
+        print(color("  [描述]", "dim"))
         print(color(f"  {skill_data['description']}", "dim"))
         print()

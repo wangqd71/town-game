@@ -19,14 +19,14 @@ def get_connections(location_id):
     loc = get_location(location_id)
     if not loc:
         return []
-    return loc.get("连接", [])
+    return loc.get("connections", [])
 
 
 def get_location_description(location_id, player):
     loc = get_location(location_id)
     if not loc:
         return "未知地点。"
-    desc = loc.get("描述", "")
+    desc = loc.get("description", "")
     for flag, alt_desc in loc.get("flag_descriptions", {}).items():
         if player.has_flag(flag):
             desc = alt_desc
@@ -72,13 +72,13 @@ def generate_text_map(current_location):
     map_lines.append("  │                                     │")
     map_lines.append("  └─────────────────────────────────────┘")
     map_lines.append("")
-    map_lines.append("  你现在的位置: " + locs.get(current_location, {}).get("名称", "未知"))
+    map_lines.append("  你现在的位置: " + locs.get(current_location, {}).get("name", "未知"))
     map_lines.append("")
     map_lines.append("  ── 地点说明 ──")
     
     for loc_id, loc_data in locs.items():
         marker = "★" if loc_id == current_location else " "
-        name = loc_data.get("名称", loc_id)
+        name = loc_data.get("name", loc_id)
         map_lines.append(f"  {marker} {name}")
     
     return "\n".join(map_lines)

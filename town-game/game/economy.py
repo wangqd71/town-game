@@ -16,7 +16,7 @@ def get_available_orders(player):
     orders = events.get("orders", [])
     available = []
     for order in orders:
-        if order.get("profession") and order["职业"] != player.profession:
+        if order.get("profession") and order["profession"] != player.profession:
             continue
         min_rank = order.get("min_rank_level", 0)
         if player.rank_level < min_rank:
@@ -26,9 +26,9 @@ def get_available_orders(player):
 
 
 def complete_order(player, order):
-    gold_reward = order.get("éå¸", order.get("gold", 0))
-    exp_reward = order.get("ç»éª", order.get("exp", 10))
-    rep_reward = order.get("å£°æ", order.get("reputation", 0))
+    gold_reward = order.get("gold", 0)
+    exp_reward = order.get("exp", 10)
+    rep_reward = order.get("reputation", 0)
 
     player.add_gold(gold_reward)
     leveled = player.add_exp(exp_reward)
@@ -38,9 +38,9 @@ def complete_order(player, order):
         player.add_skill(skill)
 
     result = {
-        "éå¸": gold_reward,
-        "ç»éª": exp_reward,
-        "å£°æ": rep_reward,
+        "gold": gold_reward,
+        "exp": exp_reward,
+        "reputation": rep_reward,
         "leveled": leveled,
         "skills_gained": order.get("grants_skills", []),
     }
@@ -58,14 +58,14 @@ def get_shop_items(player):
 def buy_item(player, item):
     cost = item.get("cost", 0)
     if player.gold < cost:
-        return False, "éå¸ä¸è¶³ã?
+        return False, "金币不足。"
     player.add_gold(-cost)
-    player.add_item(item\["Ãû³Æ"\])
+    player.add_item(item["name"])
     for attr, val in item.get("grants", {}).items():
         if hasattr(player, attr):
             current = getattr(player, attr)
             setattr(player, attr, current + val)
-    return True, f"è´­ä¹°äº?{item['name']}ï¼?
+    return True, f"购买了 {item['name']}！"
 
 
 def random_event(player):
@@ -73,7 +73,7 @@ def random_event(player):
     randoms = events.get("random_events", [])
     if not randoms:
         return None
-    eligible = [e for e in randoms if not e.get("requires_flag") or player.has_flag(e["需要标志"])]
+    eligible = [e for e in randoms if not e.get("requires_flag") or player.has_flag(e["requires_flag"])]
     if not eligible:
         return None
     return random.choice(eligible)
@@ -84,46 +84,41 @@ def get_available_side_quests(player):
     quests = events.get("side_quests", [])
     available = []
     for quest in quests:
-        # æ£æ¥æ å¿æ¡ä»?        if quest.get("requires_flag") and not player.has_flag(quest["需要标志"]):
+        # 检查标志条件
+        if quest.get("requires_flag") and not player.has_flag(quest["requires_flag"]):
             continue
-        # æ£æ¥å±æ§æ¡ä»?        if quest.get("æä½æºæ?) and player.wit < quest["æä½æºæ?]:
+        # 检查属性条件
+        if quest.get("min_wit") and player.wit < quest["min_wit"]:
             continue
-        if quest.get("æä½é­å?) and player.charm < quest["æä½é­å?]:
+        if quest.get("min_charm") and player.charm < quest["min_charm"]:
             continue
-        if quest.get("æä½æè?) and player.craft < quest["æä½æè?]:
+        if quest.get("min_craft") and player.craft < quest["min_craft"]:
             continue
-        if quest.get("æä½ä½å?) and player.grit < quest["æä½ä½å?]:
+        if quest.get("min_grit") and player.grit < quest["min_grit"]:
             continue
         available.append(quest)
     return available
 
 
 def complete_side_quest(player, quest):
-    gold_reward = quest.get("éå¸", quest.get("gold", 0))
-    exp_reward = quest.get("ç»éª", quest.get("exp", 10))
-    rep_reward = quest.get("å£°æ", quest.get("reputation", 0))
+    gold_reward = quest.get("gold", 0)
+    exp_reward = quest.get("exp", 10)
+    rep_reward = quest.get("reputation", 0)
 
     player.add_gold(gold_reward)
     leveled = player.add_exp(exp_reward)
     player.add_reputation(rep_reward)
 
     # Grant attribute reward
-    attr_reward = quest.get("å±æ§å¥å?, quest.get("attribute_reward"))
+    attr_reward = quest.get("attribute_reward")
     if attr_reward:
-        attr_map = {
-            "æè?: "craft",
-            "ä½å": "grit",
-            "æºæ§": "wit",
-            "é­å": "charm"
-        }
-        player_attr = attr_map.get(attr_reward, attr_reward)
-        player.add_attribute(player_attr, 1)
+        player.add_attribute(attr_reward, 1)
 
     result = {
-        "éå¸": gold_reward,
-        "ç»éª": exp_reward,
-        "å£°æ": rep_reward,
+        "gold": gold_reward,
+        "exp": exp_reward,
+        "reputation": rep_reward,
         "leveled": leveled,
-        "å±æ§å¥å?: attr_reward,
+        "attribute_reward": attr_reward,
     }
     return result

@@ -74,7 +74,7 @@ def create_character():
         print(color(f"      {prof['description']}", "dim"))
         print()
 
-    idx = choice_menu([profs[k]["名称"] for k in prof_keys])
+    idx = choice_menu([profs[k]["name"] for k in prof_keys])
     chosen_prof = prof_keys[idx]
 
     clear()
@@ -180,7 +180,7 @@ def show_tutorial():
     wait_for_enter()
 
 
-def game_loop(player, current_location="工坊", chapter=0):
+def game_loop(player, current_location="workshop", chapter=0):
     while True:
         clear()
         print_status_bar(player)
@@ -202,7 +202,7 @@ def game_loop(player, current_location="工坊", chapter=0):
                 print(color(f"  {event['text']}", "white"))
                 if event.get("effects"):
                     from game.dialogue import apply_effects
-                    apply_effects(event["效果"], player)
+                    apply_effects(event["effects"], player)
                 print()
                 wait_for_enter()
 
@@ -263,7 +263,7 @@ def game_loop(player, current_location="工坊", chapter=0):
         actions.append(("map", None))
 
         # 探索战斗
-        if current_location != "工坊":
+        if current_location != "workshop":
             options.append("探索寻找敌人")
             actions.append(("explore_combat", None))
 
@@ -313,14 +313,14 @@ def game_loop(player, current_location="工坊", chapter=0):
             # 显示离开当前地点的引导
             old_loc = get_location(current_location)
             if old_loc and old_loc.get("exit_text"):
-                print_narrator(old_loc["离开文本"])
+                print_narrator(old_loc["exit_text"])
                 wait_for_enter()
             # 移动到新地点
             current_location = action_data
             # 显示进入新地点的引导
             new_loc = get_location(current_location)
             if new_loc and new_loc.get("enter_text"):
-                print_narrator(new_loc["进入文本"])
+                print_narrator(new_loc["enter_text"])
                 wait_for_enter()
         elif action_type == "promote":
             handle_promote(player)
@@ -353,7 +353,7 @@ def handle_talk(player, npc_id):
 
     available = get_available_dialogues(npc_id, player)
     if not available:
-        print_dialogue(npc["名称"], "没什么好说的。", "neutral")
+        print_dialogue(npc["name"], "没什么好说的。", "neutral")
         wait_for_enter()
         return
 
@@ -369,7 +369,7 @@ def handle_talk(player, npc_id):
         return
 
     dialogue_key, node = available[idx]
-    run_dialogue(node, player, npc["名称"])
+    run_dialogue(node, player, npc["name"])
     wait_for_enter()
 
 
@@ -377,21 +377,21 @@ def handle_skills(player):
     clear()
     print_header("技能树")
 
-    tree = load_professions()[player.profession]["技能树"]
+    tree = load_professions()[player.profession]["skill_tree"]
 
     for branch_name, skills in tree.items():
         print(color(f"  ── {branch_name} ──", "cyan", "bold"))
         for skill in skills:
-            unlocked = skill["名称"] in player.skills
+            unlocked = skill["name"] in player.skills
             status = color("✓", "green") if unlocked else color("✗", "dim")
-            name_display = color(skill["名称"], "green") if unlocked else color(skill["名称"], "white")
+            name_display = color(skill["name"], "green") if unlocked else color(skill["name"], "white")
             print(f"    {status} {name_display}")
             if unlocked and skill.get("item"):
                 print(color(f"      [物品] {skill['item']}", "green", "dim"))
             else:
                 print(color(f"      {skill['description']}", "dim"))
             if not unlocked and skill.get("requirements"):
-                reqs = [f"{k}:{v}" for k, v in skill["需求"].items()]
+                reqs = [f"{k}:{v}" for k, v in skill["requirements"].items()]
                 print(color(f"      需求: {', '.join(reqs)}", "dim"))
         print()
 
@@ -428,24 +428,24 @@ def handle_orders(player, orders):
 
     if success:
         result = complete_order(player, order)
-        print_reward("金币", result["金币"])
-        print_reward("经验", result["经验"])
-        if result["声望"] > 0:
-            print_reward("声望", result["声望"])
-        if result["升级"]:
+        print_reward("金币", result["gold"])
+        print_reward("经验", result["exp"])
+        if result["reputation"] > 0:
+            print_reward("声望", result["reputation"])
+        if result["leveled"]:
             print_system("等级提升！")
         # Show skill events for any new skills
         if result.get("skills_gained"):
-            tree = load_professions()[player.profession]["技能树"]
+            tree = load_professions()[player.profession]["skill_tree"]
             for branch, skills in tree.items():
                 for skill in skills:
-                    if skill["名称"] in result["获得技能"]:
+                    if skill["name"] in result["skills_gained"]:
                         from game.dialogue import show_skill_event
                         show_skill_event(skill)
     else:
         print_system("订单完成得不太好，只得到了基本报酬。")
-        player.add_gold(order["金币"] // 3)
-        player.add_exp(order["经验"] // 3)
+        player.add_gold(order["gold"] // 3)
+        player.add_exp(order["exp"] // 3)
 
     wait_for_enter()
 
@@ -480,14 +480,14 @@ def handle_side_quests(player, quests):
 
     # Complete the side quest
     result = complete_side_quest(player, quest)
-    print_reward("金币", result["金币"])
-    print_reward("经验", result["经验"])
-    if result["声望"] > 0:
-        print_reward("声望", result["声望"])
+    print_reward("金币", result["gold"])
+    print_reward("经验", result["exp"])
+    if result["reputation"] > 0:
+        print_reward("声望", result["reputation"])
     if result.get("attribute_reward"):
-        print_reward(result["属性奖励"].title(), 1)
+        print_reward(result["attribute_reward"].title(), 1)
         print_system(f"你的{result['attribute_reward'].title()}提升了！")
-    if result["升级"]:
+    if result["leveled"]:
         print_system("等级提升！")
 
     wait_for_enter()
@@ -621,7 +621,7 @@ def handle_learn_combat_skill(player, available_skills):
 
     skill = available_skills[idx]
     from game.combat_skills import unlock_combat_skill
-    success, msg = unlock_combat_skill(player, skill["ID"])
+    success, msg = unlock_combat_skill(player, skill["id"])
 
     if success:
         print(color(f"  ★ {msg}", "green", "bold"))
@@ -655,7 +655,7 @@ def handle_combat(player, enemy_data):
 
     while not engine.combat_over:
         clear()
-        print_combat_header(engine.enemy["名称"])
+        print_combat_header(engine.enemy["name"])
 
         # 显示状态
         print_enemy_status(engine.enemy)
@@ -677,7 +677,7 @@ def handle_combat(player, enemy_data):
             for skill_id in player.combat_skills:
                 skill = get_skill_data(player.profession, skill_id)
                 if skill and skill.get("type") == "active":
-                    options.append(skill["名称"])
+                    options.append(skill["name"])
 
             options.append("逃跑")
 
@@ -719,7 +719,7 @@ def handle_combat(player, enemy_data):
 
     # 战斗结束
     clear()
-    print_combat_header(engine.enemy["名称"])
+    print_combat_header(engine.enemy["name"])
 
     if engine.player_fled:
         print(color("  你成功逃离了战斗！", "yellow"))
@@ -732,11 +732,11 @@ def handle_combat(player, enemy_data):
 
         rewards = engine.get_rewards()
         print(color("  获得奖励:", "cyan", "bold"))
-        print_reward("经验", rewards["经验"])
-        print_reward("金币", rewards["金币"])
-        if rewards["掉落物"]:
+        print_reward("经验", rewards["exp"])
+        print_reward("金币", rewards["gold"])
+        if rewards["loot"]:
             print(color(f"  掉落物品: {', '.join(rewards['loot'])}", "green"))
-        if rewards["升级数"] > 0:
+        if rewards["levels_gained"] > 0:
             print(color(f"  ★ 升级了！当前等级: {player.level} ★", "yellow", "bold"))
             print(color(f"  HP已恢复: {player.hp}/{player.max_hp}", "green"))
     else:
@@ -827,7 +827,7 @@ def main():
     else:
         player = create_character()
         chapter = 0
-        scene = "工坊"
+        scene = "workshop"
 
         # Tutorial
         show_tutorial()
