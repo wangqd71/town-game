@@ -28,7 +28,7 @@ def load_game(filename="save.json"):
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
     from game.player import Player
-    player = Player.from_save_data(data["player"])
+    player = Player.from_save_data(data["玩家"])
     chapter = data.get("current_chapter", 0)
     scene = data.get("current_scene", "start")
     return player, chapter, scene

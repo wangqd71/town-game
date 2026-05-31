@@ -31,11 +31,11 @@ def get_available_dialogues(npc_id, player):
     available = []
     for key, node in dialogues.items():
         req = node.get("requires", {})
-        if req.get("flag") and not player.has_flag(req["flag"]):
+        if req.get("flag") and not player.has_flag(req["标志"]):
             continue
-        if req.get("min_reputation") and player.reputation < req["min_reputation"]:
+        if req.get("min_reputation") and player.reputation < req["最低声望"]:
             continue
-        if req.get("profession") and req["profession"] != player.profession:
+        if req.get("profession") and req["职业"] != player.profession:
             continue
         available.append((key, node))
     return available
