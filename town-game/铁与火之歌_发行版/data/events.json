@@ -206,14 +206,34 @@
   ],
   "side_quests": [
     {
+      "id": "side_quest_help_neighbor",
+      "name": "帮助邻居",
+      "description": "邻居老约翰的椅子腿断了，想请你帮忙修一修。虽然是个小活，但能练练手艺。",
+      "min_craft": 2,
+      "gold": 15,
+      "exp": 20,
+      "reputation": 10,
+      "attribute_reward": "craft"
+    },
+    {
+      "id": "side_quest_market_cry",
+      "name": "集市叫卖",
+      "description": "市场上的摊主需要一个人帮忙吆喝叫卖。这对你的口才是个不错的锻炼机会。",
+      "min_charm": 2,
+      "gold": 15,
+      "exp": 20,
+      "reputation": 10,
+      "attribute_reward": "charm"
+    },
+    {
       "id": "side_quest_debate",
       "name": "工人辩论赛",
       "description": "酒馆里举办了一场辩论赛，主题是'手工艺 vs 机器生产'。参加辩论可以锻炼口才和思维。",
       "min_wit": 4,
       "min_charm": 3,
-      "gold": 30,
-      "exp": 25,
-      "reputation": 10,
+      "gold": 35,
+      "exp": 40,
+      "reputation": 15,
       "attribute_reward": "charm"
     },
     {
@@ -222,10 +242,43 @@
       "description": "一个年轻人想学习你的手艺。作为老师，你不仅能传授知识，还能加深自己的理解。",
       "min_craft": 5,
       "min_wit": 4,
-      "gold": 40,
-      "exp": 30,
+      "gold": 45,
+      "exp": 45,
       "reputation": 15,
       "attribute_reward": "wit"
+    },
+    {
+      "id": "side_quest_workshop",
+      "name": "工坊优化",
+      "description": "你觉得工坊的布局可以改进一下——更好的工具摆放和流程设计能让工作效率大增。",
+      "min_wit": 5,
+      "min_craft": 4,
+      "gold": 40,
+      "exp": 40,
+      "reputation": 10,
+      "attribute_reward": "wit"
+    },
+    {
+      "id": "side_quest_craft_mastery",
+      "name": "精工细作",
+      "description": "格雷师傅说，真正的匠人不在于快，而在于精。他让你挑战一件需要极致专注的作品。",
+      "min_craft": 5,
+      "min_wit": 3,
+      "gold": 50,
+      "exp": 45,
+      "reputation": 20,
+      "attribute_reward": "craft"
+    },
+    {
+      "id": "side_quest_endurance",
+      "name": "耐力考验",
+      "description": "你需要连续工作三天三夜完成一批紧急订单。这是对你体力的极大考验。",
+      "min_grit": 5,
+      "min_craft": 4,
+      "gold": 55,
+      "exp": 45,
+      "reputation": 15,
+      "attribute_reward": "grit"
     },
     {
       "id": "side_quest_invention",
@@ -233,8 +286,19 @@
       "description": "你想发明一种新的工具来提高工作效率。这需要智慧和创造力。",
       "min_wit": 6,
       "min_craft": 4,
-      "gold": 60,
-      "exp": 40,
+      "gold": 65,
+      "exp": 55,
+      "reputation": 20,
+      "attribute_reward": "wit"
+    },
+    {
+      "id": "side_quest_study",
+      "name": "学术研究",
+      "description": "一位学者正在研究手工艺的历史。他需要你的专业知识来完成他的著作。",
+      "min_wit": 6,
+      "min_craft": 3,
+      "gold": 50,
+      "exp": 50,
       "reputation": 20,
       "attribute_reward": "wit"
     },
@@ -245,31 +309,9 @@
       "min_charm": 5,
       "min_wit": 4,
       "gold": 80,
-      "exp": 35,
+      "exp": 50,
       "reputation": 25,
       "attribute_reward": "charm"
-    },
-    {
-      "id": "side_quest_endurance",
-      "name": "耐力考验",
-      "description": "你需要连续工作三天三夜完成一批紧急订单。这是对你体力的极大考验。",
-      "min_grit": 5,
-      "min_craft": 4,
-      "gold": 50,
-      "exp": 30,
-      "reputation": 15,
-      "attribute_reward": "grit"
-    },
-    {
-      "id": "side_quest_study",
-      "name": "学术研究",
-      "description": "一位学者正在研究手工艺的历史。他需要你的专业知识来完成他的著作。",
-      "min_wit": 6,
-      "min_craft": 3,
-      "gold": 45,
-      "exp": 35,
-      "reputation": 20,
-      "attribute_reward": "wit"
     }
   ]
 }

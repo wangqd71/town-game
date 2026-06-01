@@ -84,6 +84,9 @@ def get_available_side_quests(player):
     quests = events.get("side_quests", [])
     available = []
     for quest in quests:
+        # 已完成的任务不再显示
+        if player.flags.get(f"sq_{quest['id']}"):
+            continue
         # 检查标志条件
         if quest.get("requires_flag") and not player.has_flag(quest["requires_flag"]):
             continue
@@ -113,6 +116,9 @@ def complete_side_quest(player, quest):
     attr_reward = quest.get("attribute_reward")
     if attr_reward:
         player.add_attribute(attr_reward, 1)
+
+    # 标记任务已完成，防止重复刷奖励
+    player.flags[f"sq_{quest['id']}"] = True
 
     result = {
         "gold": gold_reward,
